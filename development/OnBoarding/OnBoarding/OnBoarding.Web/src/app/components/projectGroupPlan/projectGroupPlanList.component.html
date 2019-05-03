@@ -1,0 +1,61 @@
+﻿   <div *ngIf="projectGroupPlans && projectGroupPlans.length>0" class="table-responsive">
+       
+    <a class="pull-right underline" (click)="addPlan()">Add Plan</a>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th class="col-xs-1">Week</th>
+                    <th class="col-xs-1">Day</th>
+                    <th class="col-xs-3">Title</th>
+                    <th class="col-xs-2">Mode</th>
+                    <th class="col-xs-2">Owner</th>
+                    <th class="col-xs-1 text-center">Scheduled Date</th>
+                    <th class="col-xs-1 text-center">Status</th>
+                    <th class="col-xs-1 text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let projectGroup of projectGroupPlans | groupBy:'RoleName'">
+                <tr data-toggle="collapse" [attr.data-target]="'.' + projectGroup.key" (click)="onClick($event);">
+                    <td colspan="8" class="group">
+                        <b>Role : {{projectGroup.key}}</b>
+                    </td>
+                </tr>
+                <tr *ngFor="let projectGroupPlan of projectGroup.value" class="collapse in {{projectGroup.key}}">
+                    <td>{{projectGroupPlan.Week}}</td>
+                    <td>
+                        {{projectGroupPlan.Day}}
+                    </td>
+                    <td>
+                        {{projectGroupPlan.KnowledgeTransferName}}
+                    </td>
+
+                    <td>
+                        {{projectGroupPlan.ModeName}}
+                    </td>
+                    <td>
+                        {{projectGroupPlan.OwnerName}}
+                    </td>
+                    <td class="text-center">
+                        {{projectGroupPlan.ScheduledDate | date: 'dd-MM-yyyy'}}
+                    </td>
+                    <td class="text-center"> 
+                        <a class="underline" [ngClass]="{'pending': projectGroupPlan.CompletedCount==0, 'inprogress': projectGroupPlan.CompletedCount!=0 && projectGroupPlan.CompletedCount!=projectGroupPlan.TotalCount , 'completed': projectGroupPlan.CompletedCount==projectGroupPlan.TotalCount }" (click)="getAssociates(projectGroupPlan.Id)">{{projectGroupPlan.CompletedCount+"/"+projectGroupPlan.TotalCount}}</a>                        
+                    </td>
+                    <td class="text-center">
+                        
+                            <span title="Edit" class="glyphicon glyphicon-pencil" (click)="editPlan(projectGroupPlan.Id)" ></span>
+                        
+                            <span title="Delete" class="glyphicon glyphicon-remove" (click)="deletePlan(projectGroupPlan.Id)"></span>
+                        
+</td>
+           </tr>
+            </tbody>
+        </table>
+
+        <!--</div>-->
+        <!--<div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>          
+        </div>-->
+    </div>

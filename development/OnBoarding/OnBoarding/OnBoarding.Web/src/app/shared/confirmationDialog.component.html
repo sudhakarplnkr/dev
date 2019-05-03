@@ -1,0 +1,16 @@
+﻿<div class="md-dialog">
+    <div class="modal-header" [ngClass]="{'text-center-align': titleAlign=='center', 'text-right-align': titleAlign=='right' }"
+         style="background-color: honeydew; text-transform: uppercase; font-weight: 600;" >
+        <div class="modal-title ">
+            {{title}}
+        </div>
+    </div>
+    <div class="modal-body" [ngClass]="{'text-center-align': messageAlign=='center', 'text-right-align': messageAlign=='right' }">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="dialogRef.close(true)">Ok</button>
+        <button type="button" class="btn btn-warning" (click)="dialogRef.close(false)">Cancel  </button>
+    </div>
+</div>
+

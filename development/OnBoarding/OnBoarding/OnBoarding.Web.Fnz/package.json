@@ -1,0 +1,88 @@
+{
+  "name": "react-ts-wtmemp",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/file-saver": "^2.0.0",
+    "@types/jest": "^23.3.9",
+    "@types/jquery": "^3.3.22",
+    "@types/jss": "^9.5.7",
+    "@types/moment": "^2.13.0",
+    "@types/rc-progress": "^2.2.1",
+    "@types/react": "^16.4.18",
+    "@types/react-datepicker": "^2.0.2",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-fa": "^4.1.5",
+    "@types/react-redux": "^6.0.9",
+    "@types/react-redux-toastr": "^7.4.0",
+    "@types/react-router-dom": "^4.3.1",
+    "bootstrap": "^3.3.4",
+    "connected-react-router": "^4.5.0",
+    "dts-gen": "^0.5.7",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "file-saver": "^2.0.0",
+    "indefinite-observable": "^1.0.1",
+    "jest": "^23.6.0",
+    "jquery": "^3.3.1",
+    "jslint": "^0.12.0",
+    "moment": "^2.22.2",
+    "npm": "^6.5.0",
+    "popper.js": "^1.14.4",
+    "prop-types": "^15.6.2",
+    "rc-progress": "^2.3.0",
+    "react": "^16.8.5",
+    "react-accessible-accordion": "^3.0.0",
+    "react-accordion-feature": "^1.0.3",
+    "react-collapsible": "^2.6.0",
+    "react-datepicker": "^2.0.0",
+    "react-dom": "^16.8.5",
+    "react-fa": "^5.0.0",
+    "react-horizontal-stacked-bar-chart": "^8.12.9",
+    "react-image": "^1.5.1",
+    "react-light-accordion": "^0.1.4",
+    "react-modal": "^3.6.1",
+    "react-redux": "^5.1.0",
+    "react-redux-toastr": "^7.4.4",
+    "react-router-dom": "^4.3.1",
+    "react-sweet-progress": "^1.1.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "rxjs": "^6.3.3",
+    "salad-ui.chart": "^1.1.55",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx",
+      "json",
+      "node"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "setupTestFrameworkScriptFile": "./src/setupTests.ts",
+    "testMatch": [
+      "**/*.spec.tsx"
+    ]
+  },
+  "devDependencies": {
+    "react-scripts-ts": "latest"
+  }
+}

@@ -1,0 +1,22 @@
+﻿<div>
+    <div class="col-lg-3 col-md-4" *ngFor="let item of dashboardView">
+            <div class="card">
+                <h5 class="header">{{item.Team ? item.Project + ' - ' + item.Team : item.Project}}</h5>
+                <div style="display: block;width: 100px; height: 100px;">
+                    <canvas baseChart
+                            [data]="item.DoughnutChartData"
+                            [chartType]="doughnutChartType"
+                            [colors]="doughnutChartColours"
+                            [options]="doughnutOptions"></canvas>
+                    <div class="donut-inner">
+                        <h5><b>{{item.DoughnutChartData[0]}}%</b></h5>
+                    </div>
+                    <div class="description">
+                        <div class="role">
+                            <h6 *ngFor="let role of item.Roles">{{role.Role + ' : ' + role.CompletedCount + '/' + role.TotalCount}}</h6>
+                        </div>
+                        </div>
+                </div>
+            </div>
+    </div> 
+</div>

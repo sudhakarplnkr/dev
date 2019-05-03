@@ -1,0 +1,48 @@
+﻿<form class="form-horizontal" novalidate>
+    <div>
+        <h1 md-dialog-title><span>Plan Detail</span></h1>
+    </div>
+    <div md-dialog-content class="md-dialog-container">
+        <div class="form-group">
+            <label class="col-sm-2 text-right" for="KnowledgeTransfer">KT Title:</label>
+            <div class="col-sm-10">
+                        {{ associatePlan.KnowledgeTransferTitle }}
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 text-right" for="Mode">Mode:</label>
+            <div class="col-sm-4">
+                        {{ associatePlan.ModeName }}                   
+            </div>
+            <div *ngIf="associatePlan.OwnerName">
+                <label class="col-sm-2 text-right" for="Owner">Owner:</label>
+                <div class="col-sm-4">
+                    {{ associatePlan.OwnerName }}
+                </div>
+            </div>
+        </div>        
+        <div class="form-group">
+            <label class="col-sm-2 text-right" for="Week">Week:</label>
+            <div class="col-sm-1">
+                {{ associatePlan.Week }}
+            </div>
+            <label class="col-sm-1 text-right" for="Day">Day:</label>
+            <div class="col-sm-1">
+                {{ associatePlan.Day }}
+            </div>
+                <label class="col-sm-3 text-right" for="ScheduledDate">Scheduled Date:</label>
+                <div class="col-sm-4">
+                    {{ associatePlan.ScheduledDate | date: 'dd-MM-yyyy' }}
+                </div>
+            </div>
+        <div class="form-group">
+            <label class="col-sm-2 text-right" for="Reference">Reference:</label>
+            <div class="col-sm-10 word-wrap" [innerHTML]="associatePlan.Reference">
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions class="md-dialog-footer" align="end">
+        <button type="button" md-raised-button (click)="dialogRef.close()">Close</button>
+        </mat-dialog-actions>
+</form>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEA2E444-F67A-4264-A618-2B03E8DDFDA5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnBoarding.Contract</RootNamespace>
+    <AssemblyName>OnBoarding.Contract</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountRole.cs" />
+    <Compile Include="AssociateDetails\AssociateDetails.cs" />
+    <Compile Include="AssociateDetails\CreateAssociateDetails.cs" />
+    <Compile Include="AssociateDetails\CreateAssociateDetailsRequest.cs" />
+    <Compile Include="AssociateDetails\DeleteAssociateDetails.cs" />
+    <Compile Include="AssociateDetails\DeleteAssociateDetailsRequest.cs" />
+    <Compile Include="AssociateDetails\AssociateDetailsRequestModel.cs" />
+    <Compile Include="AssociateDetails\GetAssociateDetailsByAssociateRequest.cs" />
+    <Compile Include="AssociateDetails\UpdateAssociateDetails.cs" />
+    <Compile Include="AssociateDetails\UpdateAssociateDetailsRequest.cs" />
+    <Compile Include="AssociateProject\AssociateProject.cs" />
+    <Compile Include="AssociateProject\UpdateAssociateProject.cs" />
+    <Compile Include="AssociateProject\CreateAssociateProject.cs" />
+    <Compile Include="AssociateProject\UpdateAssociateProjectRequest.cs" />
+    <Compile Include="AssociateProject\CreateAssociateProjectRequest.cs" />
+    <Compile Include="AssociateProject\UpdateAssociateProjectRequestValidator.cs" />
+    <Compile Include="AssociateProject\CreateAssociateProjectRequestValidator.cs" />
+    <Compile Include="AssociateProject\UpdateAssociateProjectValidator.cs" />
+    <Compile Include="AssociateProject\CreateAssociateProjectValidator.cs" />
+    <Compile Include="AssociateGroup\AssociateGroup.cs" />
+    <Compile Include="AssociateGroup\CreateAssociateGroup.cs" />
+    <Compile Include="AssociateGroup\CreateAssociateGroupRequest.cs" />
+    <Compile Include="AssociateGroup\DeleteAssociateGroupByProjectGroupRequest.cs" />
+    <Compile Include="AssociateGroup\DeleteAssociateGroupByProjectGroupResponse.cs" />
+    <Compile Include="AssociateGroup\GetAssociateGroupByProjectGroupRequest.cs" />
+    <Compile Include="AssociateGroup\GetRolesByProjectGroupRequest.cs" />
+    <Compile Include="AssociatePlan\CreateAssociatePlanRequestValidator.cs" />
+    <Compile Include="AssociatePlan\CreateAssociatePlanValidator.cs" />
+    <Compile Include="AssociatePlan\DeleteAssociatePlanByProjectGroupPlanRequest.cs" />
+    <Compile Include="AssociatePlan\DeleteAssociatePlanByProjectGroupPlanResponse.cs" />
+    <Compile Include="AssociatePlan\GetAssociatePlanByProjectGroupRequest.cs" />
+    <Compile Include="AssociatePlan\UpdateAssociatePlan.cs" />
+    <Compile Include="AssociatePlan\UpdateAssociatePlanRequest.cs" />
+    <Compile Include="Constants\RoleConstant.cs" />
+    <Compile Include="AssociateGroup\CreateAssociateGroupRequestValidator.cs" />
+    <Compile Include="Dashboard\Dashboard.cs" />
+    <Compile Include="Dashboard\DashboardFse.cs" />
+    <Compile Include="Dashboard\GetDashboardFseRequest.cs" />
+    <Compile Include="Dashboard\GetDashboardTeamRequest.cs" />
+    <Compile Include="Dashboard\GetDashboardRequest.cs" />
+    <Compile Include="Dashboard\HomeDashboard.cs" />
+    <Compile Include="GetAccountRoleRequest.cs" />
+    <Compile Include="GetTeamRequest.cs" />
+    <Compile Include="Pagination\PageRequest.cs" />
+    <Compile Include="ProjectGroupPlan\GetProjectGroupPlanWithStatusRequest.cs" />
+    <Compile Include="ProjectGroupPlan\ProjectGroupPlanWithStatus.cs" />
+    <Compile Include="ProjectGroup\CreateProjectGroupRequestValidator.cs" />
+    <Compile Include="AssociateGroup\CreateAssociateGroupValidator.cs" />
+    <Compile Include="ProjectGroup\CreateProjectGroupValidator.cs" />
+    <Compile Include="ProjectGroup\DeleteProjectGroupRequest.cs" />
+    <Compile Include="AssociateGroup\DeleteAssociateGroupByProjectGroupValidator.cs" />
+    <Compile Include="ProjectGroup\DeleteProjectGroupRequestValidator.cs" />
+    <Compile Include="ProjectGroup\DeleteProjectGroupResponse.cs" />
+    <Compile Include="ProjectGroupPlan\GetProjectGroupPlanByRolesRequest.cs" />
+    <Compile Include="ProjectGroup\UpdateProjectGroup.cs" />
+    <Compile Include="ProjectGroup\UpdateProjectGroupRequestValidator.cs" />
+    <Compile Include="ProjectGroup\UpdateProjectGroupValidator.cs" />
+    <Compile Include="ProjectGroup\UpdateProjectGroupRequest.cs" />
+    <Compile Include="AssociatePlan\CreateAssociatePlan.cs" />
+    <Compile Include="AssociatePlan\CreateAssociatePlanRequest.cs" />
+    <Compile Include="Associate\AssociateProjectGroup.cs" />
+    <Compile Include="Associate\GetAssociateByProjectGroupRequest.cs" />
+    <Compile Include="Associate\GetAssociateRequest.cs" />
+    <Compile Include="ProjectGroup\ProcessUpdatePojectGroupRequest.cs" />
+    <Compile Include="ProjectGroup\ProcessUpdateProjectGroup.cs" />
+    <Compile Include="ProjectGroup\ProcessCreateProjectGroup.cs" />
+    <Compile Include="ProjectGroup\ProcessCreatePojectGroupRequest.cs" />
+    <Compile Include="ProjectPlan\CreateProjectPlan.cs" />
+    <Compile Include="ProjectPlan\CreateProjectPlanRequest.cs" />
+    <Compile Include="ProjectPlan\DeleteProjectPlanRequest.cs" />
+    <Compile Include="ProjectPlan\DeleteProjectPlanResponse.cs" />
+    <Compile Include="ProjectPlan\GetProjectPlanByProjectRequest.cs" />
+    <Compile Include="ProjectPlan\GetProjectPlanByProjectWithStatusRequest .cs" />
+    <Compile Include="ProjectPlan\GetProjectPlanRequest.cs" />
+    <Compile Include="ProjectPlan\ProcessUpdatePojectPlanRequest.cs" />
+    <Compile Include="ProjectPlan\ProcessUpdateProjectPlan.cs" />
+    <Compile Include="ProjectPlan\ProjectPlan.cs" />
+    <Compile Include="Pagination\Response.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="User\GetUserRolesByUserIdRequest.cs" />
+    <Compile Include="User\UserRole.cs" />
+    <Compile Include="KnowledgeTransfer\GetKnowledgeTransferRequest.cs" />
+    <Compile Include="KnowledgeTransfer\KnowledgeTransfer.cs" />
+    <Compile Include="Lookup\GetModeRequest.cs" />
+    <Compile Include="Lookup\GetRoleRequest.cs" />
+    <Compile Include="AssociatePlan\AssociatePlan.cs" />
+    <Compile Include="AssociatePlan\GetAssociatePlanRequest.cs" />
+    <Compile Include="ProjectGroupPlan\DeleteProjectGroupPlanRequestValidator.cs" />
+    <Compile Include="ProjectGroupPlan\DeleteProjectGroupPlanResponse.cs" />
+    <Compile Include="ProjectGroupPlan\DeleteProjectGroupPlanRequest.cs" />
+    <Compile Include="ProjectGroupPlan\UpdateProjectGroupPlanRequestValidator.cs" />
+    <Compile Include="ProjectGroupPlan\CreateProjectGroupPlanRequestValidator.cs" />
+    <Compile Include="ProjectGroupPlan\UpdateProjectGroupPlanValidator.cs" />
+    <Compile Include="ProjectGroupPlan\CreateProjectGroupPlanValidator.cs" />
+    <Compile Include="ProjectGroupPlan\UpdateProjectGroupPlanRequest.cs" />
+    <Compile Include="ProjectGroupPlan\CreateProjectGroupPlanRequest.cs" />
+    <Compile Include="ProjectGroupPlan\UpdateProjectGroupPlan.cs" />
+    <Compile Include="ProjectGroup\GetProjectGroupByProjectRequest.cs" />
+    <Compile Include="ProjectGroupPlan\CreateProjectGroupPlan.cs" />
+    <Compile Include="ProjectGroupPlan\ProjectGroupPlan.cs" />
+    <Compile Include="Associate\Associate.cs" />
+    <Compile Include="Lookup\Designation.cs" />
+    <Compile Include="ProjectGroupPlan\GetProjectGroupPlanRequest.cs" />
+    <Compile Include="GetProjectRequest.cs" />
+    <Compile Include="Lookup\Mode.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="Lookup\Role.cs" />
+    <Compile Include="ProjectGroup\ProjectGroup.cs" />
+    <Compile Include="ProjectGroup\CreateProjectGroup.cs" />
+    <Compile Include="ProjectGroup\CreateProjectGroupRequest.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\OnBoarding.Contract.dll" />
+    <Content Include="bin\Debug\OnBoarding.Contract.pdb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

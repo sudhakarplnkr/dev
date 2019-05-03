@@ -1,0 +1,66 @@
+﻿<div class="container">
+    <div>
+        <div *ngIf="isAdmin" class="col-md-12" style="text-align:left">
+            <!--<span class="glyphicon glyphicon-plus-sign" (click)="addAssociateDetail()">Add Associate</span>-->
+            <a [routerLink]="['/associateDetail',0]" class="glyphicon glyphicon-plus-sign">Add Associate</a>
+        </div>
+        <div *ngIf="associateCount==0">
+            <div>No Records Exists</div>
+        </div>
+        <table *ngIf="associateCount!=0" class="table">
+            <thead>
+                <tr class="row">
+                    <th> S.No  </th>
+                    <th>
+                        Assiciate ID
+                    </th>
+                    <th> Associate Name </th>
+                    <th> Email Id  </th>
+                    <th>Billable  </th>
+                    <th>
+                        Project Name
+
+                    </th>
+                    <th> Contact No  </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let associateData of associateDetail;let i=index" class="row">
+                    <td>
+                        {{i+1}}
+                    </td>
+                    <td>
+
+                        {{associateData.CognizantId}}
+
+                    </td>
+                    <td>
+                        {{associateData.AssociateName}}
+                    </td>
+                    <td>
+                        {{associateData.CognizantEmailId}}
+                    </td>
+                    <td>
+                        {{associateData.Billable==2?'yes':'No'}}
+                    </td>
+                    <td>
+                        {{associateData.ProjectName}}
+                    </td>
+                    <td>
+                        {{associateData.ContactNo}}
+                    </td>
+
+                    <td>
+                        <!--<span class="glyphicon glyphicon-pencil" title="Edit" (click)="editAssociateDetail(associateData.AssociateId)"></span>-->
+                        <a class="glyphicon glyphicon-pencil" title="Edit" [routerLink]="['/associateDetail',associateData.AssociateId]"></a>
+                        <span *ngIf="isAdmin" class="glyphicon glyphicon-remove " title="Delete" (click)="deleteAssociateDetail(associateData.AssociateId)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div *ngIf="isView" class="">
+        <associate-detail [AssociateId]="associateId" [ModeType]="modeType" (CloseForm)="closeDetail($event)"></associate-detail>
+    </div>-->
+</div>

@@ -1,0 +1,68 @@
+﻿
+<div class="panel-body table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="col-xs-1">Week</th>
+                <th class="col-xs-1">Day</th>
+                <th class="col-xs-4">Title</th>
+                <th class="col-xs-1 text-center">Scheduled Date</th>
+                <th class="col-xs-4 text-center">Upload</th>
+                <th class="col-xs-1 text-center">Download</th>
+                <!--<th>Reference</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let associateplan of associatePlans; let i= index">
+                <td>
+                    {{associateplan.Week}}
+                </td>
+                <td>
+                    {{associateplan.Day}}
+                </td>
+                <td>
+                    <a (click)="openDialog(associateplan)">{{ associateplan.KnowledgeTransferTitle }}</a>
+                </td>
+                <td class="text-center">
+                    {{associateplan.ScheduledDate | date: 'dd-MM-yyyy'}}
+                </td>
+                <td>
+                    <div class="col-xs-9">
+                        <input *ngIf="associateplan.ProofType==1" type="file" class="form-control" id="{{'file'+i}}" placeholder="" name="upload" accept="image/x-png,image/jpeg" data-max-size="2048" />
+
+                        <!--<datepicker *ngIf="associateplan.ProofType==2" [(ngModel)]="associateplan.CompletionDate"></datepicker>-->
+
+                        <!--<div  *ngIf="associateplan.ProofType==2" class="input-group">
+                            <input type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig">
+                            <div class="input-group-btn">
+                                <button class="btn btn-success" (click)="dp.show() ">Open</button>
+                            </div>
+                        </div>-->
+                        <!--<custom-datepicker [value]="associateplan.CompletionDate"></custom-datepicker>-->
+                        <input *ngIf="associateplan.ProofType==2" type="text" 
+                               placeholder="dd-MM-yyyy" bsDatepicker
+                                value="{{ associateplan.CompletionDate | date:'dd-MM-yyyy'}}"
+                               [(bsValue)]="associateplan.CompletionDate"/>
+
+                        <!--<input type="date" *ngIf="associateplan.ProofType==2" name="CompletionDate" [(ngModel)]="associateplan.CompletionDate" useValueAsDate>-->
+                    </div>
+                    <div>
+                        <button *ngIf="associateplan.ProofType==1" id="btnUpload" class="btn btn-primary" name="Upload" (click)="uploadFile(associateplan,'file'+i)">
+                            Upload
+                        </button>
+
+                        <button *ngIf="associateplan.ProofType==2" class="btn btn-primary" (click)="updateAssociatePlan(associateplan)">
+                            Update
+                        </button>
+                    </div>
+                </td>
+<td class="text-center">
+    <a *ngIf="associateplan.Proof" (click)="downloadFile(associateplan.Proof,associateplan.KnowledgeTransferTitle)">Download</a>
+    <div  *ngIf="associateplan.ProofType==2">
+        {{associateplan.CompletionDate | date: 'dd-MM-yyyy'}}
+    </div>
+</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

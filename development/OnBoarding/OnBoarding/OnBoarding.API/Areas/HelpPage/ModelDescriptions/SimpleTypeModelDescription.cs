@@ -1,0 +1,6 @@
+namespace OnBoardingWEB.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}

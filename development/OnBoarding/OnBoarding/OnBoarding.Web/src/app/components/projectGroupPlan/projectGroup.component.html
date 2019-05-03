@@ -1,0 +1,74 @@
+﻿<form class="form-horizontal" novalidate>
+    <div>
+        <h1 md-dialog-title><span>{{modalTitle}}</span></h1>
+    </div>
+    <!--<div style="padding-bottom:1px;background-color:#d8d8d8"></div>-->
+    <div md-dialog-content class="md-dialog-container">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="KnowledgeTransfer">Batch Name:</label>
+            <div class="col-xs-5">
+
+                <input type="text" class="form-control" [(ngModel)]="projectGroup.Name" placeholder="Batch Name" name="Name">
+                <div *ngIf="submitted && !projectGroup.Name" class="text-danger">
+                    {{ "Enter Batch Name" }}
+                </div>
+            </div>
+            <label class="control-label col-sm-2" for="KnowledgeTransfer">Start Date:</label>
+            <div class="col-xs-3">
+                <input class="form-control" name="StartDate" type="text" placeholder="dd-MM-yyyy" 
+                        bsDatepicker [(bsValue)]="projectGroup.StartDate" value="{{ projectGroup.StartDate | date:'dd-MM-yyyy'}}"/>
+                <!--<input type="date" class="form-control" [ngModel]="projectGroup.StartDate | date:'yyyy-MM-dd'" 
+                       placeholder="Start Date" name="StartDate" (ngModelChange)="projectGroup.StartDate=$event" />-->
+                <div *ngIf="submitted && !projectGroup.StartDate" class="text-danger">
+                    {{ "Enter Start Date" }}
+                </div>
+            </div>
+            </div>
+        <div class="row center">            
+                <div class="col-xs-5">
+                    <label>Non-selected</label>
+                    <input class="form-control" type="text" [(ngModel)]="associateCodeNotInGroup" placeholder="Filter"  name="associateCodeNotInGroup">
+
+                    <select multiple="multiple" [(ngModel)]="selectedAssociatesNotInGroup" class="form-control" name="lbAssociatesNotInGroup" style="height: 194px;">
+                        <option *ngFor="let event of associatesNotInGroup | filter : ['Code','Name'] : [associateCodeNotInGroup,associateCodeNotInGroup]" [ngValue]="event">
+                            {{ event.Code +"-"+ event.Name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-xs-2 btn-group-vertical buttons">
+                    <button type="button" (click)="addAllToGroup()" class="btn btn-default" title="Move all">
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                    </button>
+                    <button type="button" (click)="addToGroup()" class="btn btn-default" title="Move selected">
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                    </button>
+                    <button type="button" (click)="removeFromGroup()" class="btn btn-default" title="Remove selected">
+                        <i class="glyphicon glyphicon-arrow-left"></i>
+                    </button>
+                    <button type="button" (click)="removeAllFromGroup()" class="btn btn-default" title="Remove all">
+                        <i class="glyphicon glyphicon-arrow-left"></i>
+                        <i class="glyphicon glyphicon-arrow-left"></i>
+                    </button>
+                </div>
+                <div class="col-xs-5">
+                    <label>Selected</label>
+                    <input class="filter form-control" type="text" [(ngModel)]="associateCodeInGroup" placeholder="Filter" name="associateCodeNotInGroup">
+                    <select multiple="multiple" [(ngModel)]="selectedAssociatesInGroup" class="form-control" name="lbAssociatesInGroup" style="height: 194px;">
+                        <option *ngFor="let event of associatesInGroup | filter : ['Code','Name'] : [associateCodeInGroup,associateCodeInGroup]" [ngValue]="event">
+                            {{ event.Code +"-"+ event.Name }}
+                        </option>
+                    </select>
+                </div>          
+            </div>
+        <div class="row">
+            <div *ngIf="submitted && associatesInGroup.length==0" class="text-danger col-xs-12">
+                {{ "Select Associates" }}
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions class="md-dialog-footer" align="end">
+        <button type="button" md-raised-button (click)="dialogRef.close()">Cancel</button>&nbsp;
+        <button type="button" class="btn btn-primary" (click)="submit();">{{modalBtnTitle}}</button>
+        </mat-dialog-actions>
+</form>

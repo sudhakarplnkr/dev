@@ -1,0 +1,189 @@
+﻿<div>
+    <div class="bg-primary" style="height: 39px;padding: 10px 10px 10px 5px;margin: 10px 0px 10px 0px;font-size: medium;font-weight: bold;">
+        <p class="bg-primary">
+            {{mode}} Associate Detail
+        </p>
+    </div>
+    <form [formGroup]="associateForm" (ngSubmit)="onSubmit(associateForm.value)">
+        <fieldset>
+            <legend>Basic Information</legend>
+            <div class="form-group col-md-4 ">
+                <label>Cognizant ID</label>
+                <input type="text" class="form-control" [disableControl]="!isAdmin" formControlName="CognizantId" />
+                <div *ngIf="formErrors.CognizantId" class="alert alert-danger">
+                    {{formErrors.CognizantId}}
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Assocaite Name</label>
+                <input type="text" class="form-control" formControlName="AssociateName" />
+                <div *ngIf="formErrors.AssociateName" class="alert alert-danger">
+                    {{formErrors.AssociateName}}
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Cognizant Email Id</label>
+                <input type="text" class="form-control" formControlName="CognizantEmailId" />
+                <div *ngIf="formErrors.CognizantEmailId" class="alert alert-danger">
+                    {{formErrors.CognizantEmailId}}
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Cognizant Role</label>
+                <select class="form-control" formControlName="CognizantRoleId" [disableControl]="!isAdmin">
+                    <option [ngValue]="null">Select Cognizant Role</option>
+                    <option *ngFor="let cognizantRole of role" [value]="cognizantRole.Id">
+                        {{cognizantRole.Name }}
+                    </option>
+                </select>
+                <div *ngIf="formErrors.CognizantRoleId" class="alert alert-danger">
+                    {{formErrors.CognizantRoleId}}
+                </div>
+            </div>
+            <div class="form-group col-md-4 ">
+                <label>Project Name</label>
+                <select class="form-control" formControlName="ProjectId" (change)="onChangeProject($event.target.value)" [disableControl]="!isAdmin">
+                    <option [value]="null">Select Project</option>
+                    <option *ngFor="let projects of project" [value]="projects.Id">
+                        {{projects.Name}}
+                    </option>
+                </select>
+                <div *ngIf="formErrors.ProjectId" class="alert alert-danger">
+                    {{formErrors.ProjectId}}
+                </div>
+
+            </div>
+            <div class="form-group col-md-4">
+                <label>Team Name</label>
+                <select class="form-control" formControlName="TeamId" [disableControl]="!isAdmin">
+                    <option [ngValue]="null">Select Team</option>
+                    <option *ngFor="let teamList of team" [value]="teamList.Id">
+                        {{teamList.Name}}
+                    </option>
+                </select>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional Information</legend>
+            <div class="form-group col-md-4">
+                <label> RLG User Name </label>
+                <input type="text" class="form-control" formControlName="RLGUserName" />
+                <!--<div *ngIf="formErrors.RLGUserName" class="alert alert-danger">
+                    {{formErrors.RLGUserName}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Staff ID  </label>
+                <input type="text" class="form-control" formControlName="RLGStaffId" />
+                <!--<div *ngIf="formErrors.RLGStaffId" class="alert alert-danger">
+                    {{formErrors.RLGStaffId}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Role </label>
+                <select class="form-control" formControlName="RLGRoleId">
+                    <option [ngValue]="null">Select RLG Role</option>
+                    <option *ngFor="let rlgRole of accountRole" [value]="rlgRole.Id">
+                        {{rlgRole.Name}}
+                    </option>
+                </select>
+                <!--<div *ngIf="formErrors.RLGRoleId" class="alert alert-danger">
+                    {{formErrors.RLGRoleId}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Email </label>
+                <input type="text" class="form-control" formControlName="RLGEmail" />
+                <!--<div *ngIf="formErrors.RLGEmail" class="alert alert-danger">
+                    {{formErrors.RLGEmail}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label>Asset No  </label>
+                <input type="text" class="form-control" formControlName="AssetNo" />
+                <div *ngIf="formErrors.AssetNo" class="alert alert-danger">
+                    {{formErrors.AssetNo}}
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label> Virtual Machine No </label>
+                <input type="text" class="form-control" formControlName="VirtualMachineNo" />
+                <!--<div *ngIf="formErrors.VirtualMachineNo" class="alert alert-danger">
+                    {{formErrors.VirtualMachineNo}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> Portfolio  </label>
+                <select class="form-control" formControlName="Portfolio">
+                    <option [ngValue]="null">Select Portfolio</option>
+                    <option [value]="1">Yes</option>
+                    <option [value]="2">No</option>
+                </select>
+                <!--<div *ngIf="formErrors.Portfolio" class="alert alert-danger">
+                    {{formErrors.Portfolio}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Experience(months)  </label>
+                <input type="text" class="form-control" formControlName="RLGExperience" />
+                <!--<div *ngIf="formErrors.RLGExperience" class="alert alert-danger">
+                    {{formErrors.RLGExperience}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label>Billability  </label>
+                <select type="text" class="form-control" formControlName="Billable" [disableControl]="!isAdmin">
+                    <option [ngValue]="null">Select Billability</option>
+                    <option [value]="1">Non-Billable</option>
+                    <option [value]="2">Billable</option>
+                </select>
+                <!--<div *ngIf="formErrors.Billable" class="alert alert-danger">
+                    {{formErrors.Billable}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> Location </label>
+                <select type="text" class="form-control" formControlName="Location">
+                    <option [ngValue]="null">Select Location</option>
+                    <option [value]="1">Offshore</option>
+                    <option [value]="2">Onshore</option>
+                </select>
+                <!--<div *ngIf="formErrors.Location" class="alert alert-danger">
+                    {{formErrors.Location}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label>Contact Number  </label>
+                <input type="text" class="form-control" formControlName="ContactNo" />
+                <!--<div *ngIf="formErrors.ContactNo" class="alert alert-danger">
+                    {{formErrors.ContactNo}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Date of Joining </label>
+                <input type="text" class="form-control" placeholder="dd-MM-yyyy" bsDatepicker
+                       value="{{associateForm.value.RLGDateofJoining |date:'dd-MM-yyyy' }}" formControlName="RLGDateofJoining" />
+                <!--<div *ngIf="formErrors.RLGDateofjoining" class="alert alert-danger">
+                    {{formErrors.RLGDateofjoining}}
+                </div>-->
+            </div>
+            <div class="form-group col-md-4">
+                <label> RLG Date of Leaving  </label>
+                <input type="text" class="form-control" placeholder="dd-MM-yyyy" bsDatepicker
+                       value="{{associateForm.value.RLGDateofLeaving |date:'dd-MM-yyyy' }}" formControlName="RLGDateofLeaving" [disableControl]="!isAdmin" />
+                <!--<div *ngIf="formErrors.RLGDateofLeaving" class="alert alert-danger">
+                    {{formErrors.RLGDateofLeaving}}
+                </div>-->
+            </div>
+
+        </fieldset>
+
+        <div class="form-group  col-md-6 col-md-offset-5">
+            <button name="add" type="submit" value="add" class="btn btn-primary" [disabled]="!associateForm.valid">{{mode}}</button>
+            <a value="cancel" class="btn btn-danger" routerLink="/associateList">Back</a>
+            <input type="hidden" formControlName="AssociateId" />
+        </div>
+    </form>
+</div>

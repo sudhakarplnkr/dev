@@ -1,0 +1,29 @@
+﻿<div class="panel-body">
+    <div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-1 control-label" for="project">Project</label>
+        <div class="col-xs-3">
+            <select id="project" [(ngModel)]="selectedProject" (change)="onChangeProject()" class="form-control">
+                <option [ngValue]=null>Select Project</option>
+                <option *ngFor="let event of projects" [ngValue]="event">
+                    {{ event.Name }}
+                </option>
+            </select>
+        </div>
+        <label class="col-xs-1 control-label" for="batch">Batch</label>
+        <div class="col-xs-3">
+            <select id="batch" [(ngModel)]="selectedGroup" (change)="onChangeProjectGroup()" class="form-control">
+                <option [ngValue]=null>Select Batch</option>
+                <option *ngFor="let event of projectGroups" [ngValue]="event">
+                    {{ event.Name }}
+                </option>
+            </select>
+        </div>
+        <div class="col-xs-4 btn-toolbar"><button class="btn btn-primary" *ngIf="selectedProject!=null && selectedGroup==null" (click)="addProjectGroup()">Create Batch</button>
+            <button class="btn btn-primary" *ngIf="selectedGroup!=null" (click)="editProjectGroup()">Edit Batch</button>
+        <button class="btn btn-primary" *ngIf="selectedGroup!=null" (click)="deleteProjectGroup()">Delete Batch</button></div>
+    </div>
+        </div>
+        <project-group-plan-list></project-group-plan-list>
+
+    </div>

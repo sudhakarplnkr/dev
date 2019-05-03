@@ -1,0 +1,29 @@
+﻿<form novalidate>
+    <div>
+        <h1 md-dialog-title><span>Associate Status</span></h1>
+    </div>
+    <!--<div style="padding-bottom:1px;background-color:#d8d8d8"></div>-->
+    <div md-dialog-content class="md-dialog-container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Associate</th>
+                    <th>Completed Date</th>
+                    <th>Proof</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let planDetail of associatePlan">
+                    <td>{{planDetail.AssociateCode}} - {{planDetail.AssociateName}}</td>
+                    <td>
+                        {{planDetail.CompletionDate | date: 'dd/MM/yyyy'}}
+                    </td>
+                    <td> <a *ngIf="planDetail.Proof" (click)="downloadFile(planDetail.Proof,planDetail.AssociateCode +'_'+ planDetail.KnowledgeTransferTitle)">Download</a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <mat-dialog-actions class="md-dialog-footer" align="end">
+        <button type="button" md-raised-button (click)="dialogRef.close()">Close</button>&nbsp;
+    </mat-dialog-actions>
+</form>

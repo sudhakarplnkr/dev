@@ -1,0 +1,97 @@
+﻿<form class="form-horizontal" novalidate (ngSubmit)="onSubmit(projectGroupPlanFrm)" [formGroup]="projectGroupPlanFrm">
+    <div>
+        <h1 md-dialog-title><span>{{modalTitle}}</span></h1>
+    </div>
+    <!--<div style="padding-bottom:1px;background-color:#d8d8d8"></div>-->
+    <div md-dialog-content class="md-dialog-container">
+        <div class="form-group">
+
+
+            <label class="control-label col-sm-2" for="KnowledgeTransfer">KT Title:</label>
+            <div class="col-sm-10">
+                <select id="KnowledgeTransfer" formControlName="KnowledgeTransferId" class="form-control">
+                    <option [ngValue]=null>Select Title</option>
+                    <option *ngFor="let event of knowledgeTransfers" [value]="event.Id">
+                        {{ event.Name }}
+                    </option>
+                </select>
+                <div *ngIf="formErrors.KnowledgeTransferId" class="text-danger">
+                    {{ formErrors.KnowledgeTransferId }}
+                </div>
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Role">Role:</label>
+            <div class="col-sm-4">
+                <select id="Role" formControlName="RoleId" class="form-control">
+                    <option [ngValue]=null>Select Role</option>
+                    <option *ngFor="let event of roles" [value]="event.Id">
+                        {{ event.Name }}
+                    </option>
+                </select>
+                <div *ngIf="formErrors.RoleId" class="text-danger">
+                    {{ formErrors.RoleId }}
+                </div>
+            </div>            
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Mode">Mode:</label>
+            <div class="col-sm-4">
+                <select id="Mode" formControlName="ModeId" class="form-control">
+                    <option [ngValue]=null>Select Mode</option>
+                    <option *ngFor="let event of modes" [value]="event.Id">
+                        {{ event.Name }}
+                    </option>
+                </select>
+                <div *ngIf="formErrors.ModeId" class="text-danger">
+                    {{ formErrors.ModeId }}
+                </div>
+            </div>
+            <label class="control-label col-sm-2" for="Owner">Owner:</label>
+            <div class="col-sm-4">
+                <select id="Owner" formControlName="OwnerId" class="form-control">
+                    <option [ngValue]=null>Select Owner</option>
+                    <option *ngFor="let event of associates" [value]="event.Id">
+                        {{ event.Name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Reference">Reference:</label>
+            <div class="col-sm-10">
+                <textarea rows="4" cols="50" class="form-control" placeholder="Reference" formControlName="Reference"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Week">Week:</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="Week" formControlName="Week">
+                <div *ngIf="formErrors.Week" class="text-danger">
+                    {{ formErrors.Week }}
+                </div>
+            </div>      
+            <label class="control-label col-sm-1" for="Day">Day:</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control" placeholder="Day" formControlName="Day">
+                <div *ngIf="formErrors.Day" class="text-danger">
+                    {{ formErrors.Day }}
+                </div>
+            </div>
+            <label class="control-label col-sm-3" for="ScheduledDate">Scheduled Date:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="dd-MM-yyyy" bsDatepicker
+                       value="{{ projectGroupPlanFrm.value.ScheduledDate | date:'dd-MM-yyyy'}}" formControlName="ScheduledDate" />
+                <!--<input type="date" class="form-control" placeholder="Scheduled Date" formControlName="ScheduledDate" useValueAsDate>-->
+                <div *ngIf="formErrors.ScheduledDate" class="text-danger">
+                    {{ formErrors.ScheduledDate }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions class="md-dialog-footer" align="end">
+        <button type="button" md-raised-button (click)="dialogRef.close()">Cancel</button>&nbsp;
+        <button type="submit" class="btn btn-primary" [disabled]="projectGroupPlanFrm.invalid" >{{modalBtnTitle}}</button>
+        </mat-dialog-actions>
+</form>
